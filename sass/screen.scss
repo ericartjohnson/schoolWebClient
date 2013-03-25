@@ -1,0 +1,97 @@
+@import "compass/reset";
+@import "compass/css3";
+
+$largeType: 40px;
+$headerHeight: 50px;
+$footerHeight: 40px;
+$standardShadow: rgba(0,0,0,1) 0px 0px 15px;
+
+$color-primary-1: #00A07D;
+$color-primary-2: #1E7864;
+$color-primary-3: #006851;
+$color-primary-4: #34D0AD;
+$color-primary-5: #5DD0B6;
+
+$color-secondary-a-1: #F98D00;
+$color-secondary-a-2: #BB7E2F;
+$color-secondary-a-3: #A25B00;
+$color-secondary-a-4: #FCAA3F;
+$color-secondary-a-5: #FCC071;
+
+$color-secondary-b-1: #F90C00;
+$color-secondary-b-2: #BB362F;
+$color-secondary-b-3: #A20800;
+$color-secondary-b-4: #FC483F;
+$color-secondary-b-5: #FC7871;
+
+$color-off-white: #EEE;
+
+@mixin noiseBG{
+	background-image: url(../img/noise.png);
+}
+
+body{
+	font-family: helvetica, arial, sans-serif;
+}
+
+h1{
+	font-size: $largeType;
+}
+
+#main{
+	position: absolute;
+	min-height: 400px;
+	min-width: 400px;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+}
+
+#header{
+	height: $headerHeight;
+	width: 100%;
+	background: $color-primary-1;
+	@include noiseBG;
+	@include box-shadow($standardShadow);
+	position: absolute;
+	z-index: 3;
+
+	#title{
+		text-align: center;
+		color: $color-primary-3;
+		margin: 5px 0 0;
+		@include text-shadow(rgba(0, 0, 0, 0.2) 0px 0px 5px);
+		font-weight: bold;
+	}
+}
+
+#footer{
+	height: $footerHeight;
+	width: 100%;
+	background: $color-secondary-a-4;
+	@include noiseBG;
+	position:absolute;
+	bottom:0;
+	z-index: 1;
+
+	.copyright{
+		color: $color-secondary-a-3;
+		margin: 8px 0 0;
+		font-size: 11px;
+		text-align:center;
+		line-height: 14px;
+	}
+}
+
+#content{
+	position: absolute;
+	top: $headerHeight;
+	right: 0;
+	bottom: $footerHeight;
+	left: 0;
+	background: $color-off-white;
+	@include noiseBG;
+	@include box-shadow($standardShadow);
+	z-index: 2;
+}
