@@ -1,0 +1,1 @@
+<div id="crud_add_panel" class="panel">+</div>

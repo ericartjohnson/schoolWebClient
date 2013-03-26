@@ -38,22 +38,21 @@ requirejs.config({
     }
 });
 
-requirejs(['jquery', 'app/app', 'backbone.marionette', 'hb!template/layout_hcf.hb'],
-function($, App, Marionette, HCFLayout){
+requirejs(['jquery', 'app/app', 'view/layout_hcf', 'model/class', 'view/crud_panels'],
+function($, App, HCFLayout, ClassModel, CrudPanelsView){
     // jquery on ready
 	$(function(){
+        var hcfView = new HCFLayout();
+        App.mainRegion.show(hcfView);
 
-        var hcfLayout = Marionette.Layout.extend({
-            template: HCFLayout,
-            regions: {
-                header: "#header",
-                content: "#content",
-                footer: "#footer"
-            },
-            className: "hcfLayout"
+        var firstClass = new ClassModel({id: 1});
+        firstClass.fetch({
+            success: function(){
+                var panelsView = new CrudPanelsView({
+                    collection: firstClass.get("students")
+                });
+                hcfView.content.show(panelsView);
+            }
         });
-
-        var hcf = new hcfLayout();
-        App.mainRegion.show(hcf);
 	});
 });
