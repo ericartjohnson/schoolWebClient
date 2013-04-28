@@ -108,6 +108,8 @@ h1{
 }
 
 .panel{
+	@include transition-property(background, transform, box-shadow);
+  	@include transition-duration(0.5s);
 	@include box-shadow($panelShadow);
 	float: left;
 	margin: 20px;
@@ -117,6 +119,13 @@ h1{
 	border-radius: 5px;
 	border: 1px solid gray;
 	background: $color-off-white;
+
+	&:hover{
+		@include box-shadow(rgba(0,0,0,0.5) 14px 14px 5px);
+		@include translate(0px, -10px);
+		background: $color-secondary-b-4;
+
+	}
 
 	h1{
 		font-size: 24px;
